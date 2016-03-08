@@ -1,5 +1,7 @@
 ## 1.2.4 (Unreleased)
 
+* Support Rails 5. By @bmulholland
+
 
 ## 1.2.3 (2015-2-5)
 * Support the latest version of Rails 4.2 and 4.1. By @danielrhodes
