@@ -20,8 +20,11 @@ module Squeel
         # behavior. This is a way to do it that avoids using alias_method_chain.
         module WhereChainCompatibility
           include ::ActiveRecord::QueryMethods
-          define_method :build_where,
-            ::ActiveRecord::QueryMethods.instance_method(:build_where)
+          # Rails 5 drops build_where
+          unless ::ActiveRecord::VERSION::MAJOR == 5
+            define_method :build_where,
+              ::ActiveRecord::QueryMethods.instance_method(:build_where)
+          end
         end
 
         def where(opts = :chain, *rest)
