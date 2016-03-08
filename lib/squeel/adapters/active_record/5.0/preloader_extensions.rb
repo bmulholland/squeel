@@ -1,1 +1,1 @@
-require 'squeel/adapters/active_record/4.1/preloader_extensions'
+require 'squeel/adapters/active_record/4.2/preloader_extensions'
