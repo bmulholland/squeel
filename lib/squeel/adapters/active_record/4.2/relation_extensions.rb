@@ -18,7 +18,11 @@ module Squeel
         end
 
         def build_arel
-          arel = Arel::SelectManager.new(table.engine, table)
+          if ::ActiveRecord::VERSION::MAJOR == 5
+            arel = Arel::SelectManager.new(table)
+          else
+            arel = Arel::SelectManager.new(table.engine, table)
+          end
 
           build_joins(arel, joins_values.flatten) unless joins_values.empty?
 
