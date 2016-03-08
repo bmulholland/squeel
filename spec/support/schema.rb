@@ -3,6 +3,12 @@ require 'squeel'
 require 'pathname'
 require 'yaml'
 
+# Rails 5 extracted silence_stream into a module https://github.com/rails/rails/pull/18526
+if ActiveRecord::VERSION::MAJOR == 5
+  require 'active_support/testing/stream'
+  include ActiveSupport::Testing::Stream
+end
+
 ENV['SQ_DB'] ||= 'sqlite3'
 
 MYSQL_ENV = ENV['SQ_DB'] =~ /mysql/
